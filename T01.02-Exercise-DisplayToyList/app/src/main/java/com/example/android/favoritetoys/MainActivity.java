@@ -17,20 +17,45 @@ package com.example.android.favoritetoys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     // TODO (1) Declare a TextView variable called mToysListTextView
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView mToysListTextView  = (TextView) findViewById(R.id.tv_toy_toylist);
+
+        mToysListTextView.setText(getTextArray());
         // TODO (3) Use findViewById to get a reference to the TextView from the layout
 
         // TODO (4) Use the static ToyBox.getToyNames method and store the names in a String array
 
         // TODO (5) Loop through each toy and append the name to the TextView (add \n for spacing)
     }
+
+
+    protected String getTextArray(){
+
+        ToyBox mToyBox = new ToyBox();
+
+        String sFull = "";
+
+        for (int i = 0; i <  mToyBox.getToyNames().length ; i++){
+
+            sFull = sFull + "\n\n\n" + mToyBox.getToyNames()[i];
+
+        }
+
+
+
+        return sFull;
+    }
+
 }
